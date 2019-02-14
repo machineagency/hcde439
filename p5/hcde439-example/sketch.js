@@ -73,8 +73,8 @@ function draw() {
   fill(255);
 
   if (datain == 0) {
-      text("buttom pressed: YES", 30,30);
+      text("button pressed: YES", 30,30);
   } else {
-      text("buttom pressed: NO", 30,30);
+      text("button pressed: NO", 30,30);
   }
 }
