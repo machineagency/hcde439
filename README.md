@@ -1,4 +1,4 @@
-# HCDE 439 Physical Computing Winter 2021
+# HCDE 439 Physical Computing Winter 2023
 
 **Instructor:** Nadya Peek
 
