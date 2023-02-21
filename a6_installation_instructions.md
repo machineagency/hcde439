@@ -1,7 +1,7 @@
 # Installation for A6: Datalogging
 
 1. Verify that you have programmed your Arduino and check that you can run the serial monitor and get values that make sense. Once you have, then close the serial monitor and leave the Arduino plugged in. *Make sure the Arduino is plugged in when you run your webpage.*
-2. Download the "server" binary [here](https://github.com/vanevery/p5.serialcontrol/releases)
+2. Download the "server" binary [here]([https://github.com/vanevery/p5.serialcontrol/releases](https://github.com/p5-serial/p5.serialserver))
 3. Follow the instructions to install it. Then run the program. Press "List Ports" and select the serial port that corresponds to your Arduino (probably something like "usbmodem" on Mac/other Unix or "COM" and some number on Windows). Press "Enabled." You should see the same serial output. Then uncheck "Enabled." *Make sure this program is running when you run your webpage.*
 4. Download full `p5.js complete` from [here](https://p5js.org/download/).
 5. Download the `hcde439` folder from the [course github](https://github.com/machineagency/hcde439). The easiest way to do this is just to download a zip somewhere and unzip it. Note that there is a folder called `p5` here, but we are only copying from this `p5` into the 
