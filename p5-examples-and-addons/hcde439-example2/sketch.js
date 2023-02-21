@@ -1,5 +1,5 @@
 var serial; // variable to hold an instance of the serialport library
-var portName = '/dev/ttyACM0' //rename to the name of your port
+var portName = '/dev/tty.usbmodem14301'; //rename to the name of your port
 var dataarray = []; //some data coming in over serial!
 var xPos = 0;
 
@@ -50,13 +50,13 @@ function serialEvent() {
     var newarray; 
     try {
       newarray = JSON.parse(datastring); // can we parse the serial
+      if (typeof newarray == 'object') {
+        dataarray = newarray;
+      }
+      console.log("got back " + datastring);
       } catch(err) {
-          //console.log(err);
+      // got something that's not a json
     }
-    if (typeof(newarray) == 'object') {
-      dataarray = newarray;
-    }
-    console.log("got back " + datastring);
   } 
 }
 
