@@ -1,5 +1,5 @@
 var serial; // variable to hold an instance of the serialport library
-var portName = '/dev/tty.usbmodem14301' //rename to the name of your port
+var portName = '/dev/tty.usbmodem14301'; //rename to the name of your port
 var datain; //some data coming in over serial!
 var xPos = 0;
 
