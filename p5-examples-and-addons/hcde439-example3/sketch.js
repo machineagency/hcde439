@@ -1,5 +1,5 @@
 var serial; // variable to hold an instance of the serialport library
-var portName = '/dev/ttyACM0' //rename to the name of your port
+var portName = '/dev/tty.usbmodem14301'; //rename to the name of your port
 var inData;
 
 
@@ -11,7 +11,8 @@ function setup() {
     serial.on('data', serialEvent);     // callback for when new data arrives
     serial.on('error', serialError);    // callback for errors
     serial.on('close', portClose);      // callback for the port closing
-
+    
+    console.log("muffin");
     serial.list();                      // list the serial ports
     serial.open(portName);              // open a serial port
     createCanvas(1200, 800);
@@ -43,10 +44,17 @@ function portClose() {
 }
 
 function serialEvent() {
-    if (serial.available()) {
-	inData = serial.read();
-	console.log("got back " + inData); 
+    //if (serial.available()) {
+	//inData = serial.read();
+	//console.log("got back " + inData); 
+    //}
+  if (serial.available()) {
+    let maybeNumber = parseInt(serial.readLine());
+    if (!isNaN(maybeNumber)) {
+        inData = maybeNumber;
+        console.log(inData);
     }
+  }
 }
 
 function keyPressed() {
