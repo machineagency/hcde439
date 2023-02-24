@@ -12,7 +12,6 @@ function setup() {
     serial.on('error', serialError);    // callback for errors
     serial.on('close', portClose);      // callback for the port closing
     
-    console.log("muffin");
     serial.list();                      // list the serial ports
     serial.open(portName);              // open a serial port
     createCanvas(1200, 800);
