@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+    <script src="https://unpkg.com/@gohai/p5.webserial@^1/libraries/p5.webserial.js"></script>
+
+    <title>P5 webserial</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let port;
+      let connectBtn;
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight); // Create a canvas that is the size of our browser window
+        background(220); // Set the background color
+
+        port = createSerial();
+
+        // in setup, we can open ports we have used previously
+        // without user interaction
+
+        let usedPorts = usedSerialPorts();
+        if (usedPorts.length > 0) {
+          port.open(usedPorts[0], 9600);
+        }
+
+        // any other ports can be opened via a dialog after
+        // user interaction (see connectBtnClick below)
+        connectBtn = createButton("Connect to Arduino");
+        connectBtn.position(5, 5);
+        connectBtn.mousePressed(connectBtnClick);
+      }
+
+      function draw() {
+        let str = port.readUntil("\n"); // Read until the newline
+        str = str.trim(); // trim the whitespace
+
+        if (str == "") {
+          // If we read an empty string, do nothing.
+        } else if (str === "DOWN") {
+          // If the button is pressed, make the background green
+          background("green");
+        } else if (str === "UP") {
+          // Else if the button is up, make the background yellow
+          background("yellow");
+        }
+
+        // changes button label based on connection status
+        if (!port.opened()) {
+          connectBtn.html("Connect to Arduino");
+        } else {
+          connectBtn.html("Disconnect");
+        }
+      }
+
+      function connectBtnClick() {
+        if (!port.opened()) {
+          port.open(9600);
+        } else {
+          port.close();
+        }
+      }
+    </script>
+  </body>
+</html>
